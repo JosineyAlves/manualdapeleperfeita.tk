@@ -29,6 +29,36 @@
         }
     </style>
 
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-T4JR72J');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Velocidade VTurb -->
+    <link rel="preload" href="https://scripts.converteai.net/7da96de8-b803-4e0a-a85a-34c6cb6b92e9/players/627b3fac9378020009f863f2/player.js" as="script">
+    <link rel="preload" href="https://cdn.converteai.net/lib/js/smartplayer/1.8.3/smartplayer.min.js" as="script">
+    <link rel="preload" href="https://images.converteai.net/7da96de8-b803-4e0a-a85a-34c6cb6b92e9/players/627b3fac9378020009f863f2/thumbnail.jpg" as="image">
+    <link rel="preload" href="https://cdn.converteai.net/7da96de8-b803-4e0a-a85a-34c6cb6b92e9/627b3f5c960f3f000ad545a3/playlist.m3u8" as="fetch">
+    <link rel="dns-prefetch" href="https://cdn.converteai.net">
+    <link rel="dns-prefetch" href="https://scripts.converteai.net">
+    <link rel="dns-prefetch" href="https://images.converteai.net">
+    <link rel="dns-prefetch" href="https://api.vturb.com.br">
+    <!-- Velocidade VTurb -->
+
     <!-- Meta Pixel Code -->
     <script>
         ! function(f, b, e, v, n, t, s) {
@@ -57,25 +87,6 @@
     /></noscript>
     <!-- End Meta Pixel Code -->
 
-    <!-- Google Tag Manager -->
-    <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-T4JR72J');
-    </script>
-    <!-- End Google Tag Manager -->
-
 
 </head>
 
@@ -103,13 +114,70 @@
                         var s = document.createElement("script");
                         s.src = "https://scripts.converteai.net/7da96de8-b803-4e0a-a85a-34c6cb6b92e9/players/627b3fac9378020009f863f2/player.js", s.async = !0, document.head.appendChild(s);
                     </script>
+
+
+                    <!-- Script Esconder -->
+                    <style>
+                        .esconder {
+                            display: none
+                        }
+                    </style>
+
+                    <script type="text/javascript">
+                        document.addEventListener("DOMContentLoaded", function() {
+                            /* ALTERE O VALOR 10 PARA OS SEGUNDOS EM QUE AS SEÇÕES VÃO APARECER */
+                            var SECONDS_TO_DISPLAY = 1354;
+                            var CLASS_TO_DISPLAY = ".esconder";
+
+                            /* DAQUI PARA BAIXO NAO PRECISA ALTERAR */
+                            var attempts = 0;
+                            var elsHiddenList = [];
+                            var elsDisplayed = false;
+                            var elsHidden = document.querySelectorAll(CLASS_TO_DISPLAY);
+                            var alreadyDisplayedKey = `alreadyElsDisplayed${SECONDS_TO_DISPLAY}`
+                            var alreadyElsDisplayed = localStorage.getItem(alreadyDisplayedKey);
+
+                            setTimeout(function() {
+                                elsHiddenList = Array.prototype.slice.call(elsHidden);
+                            }, 0);
+
+                            var showHiddenElements = function() {
+                                elsDisplayed = true;
+                                elsHiddenList.forEach((e) => e.style.display = "block");
+                                localStorage.setItem(alreadyDisplayedKey, true)
+                            }
+
+                            var startWatchVideoProgress = function() {
+                                if (typeof smartplayer === 'undefined' || !(smartplayer.instances && smartplayer.instances.length)) {
+                                    if (attempts >= 10) return;
+                                    attempts += 1;
+                                    return setTimeout(function() {
+                                        startWatchVideoProgress()
+                                    }, 1000);
+                                }
+
+                                smartplayer.instances[0].on('timeupdate', () => {
+                                    if (elsDisplayed || smartplayer.instances[0].smartAutoPlay) return;
+                                    if (smartplayer.instances[0].video.currentTime < SECONDS_TO_DISPLAY) return;
+                                    showHiddenElements();
+                                })
+                            }
+
+                            if (alreadyElsDisplayed === 'true') {
+                                setTimeout(function() {
+                                    showHiddenElements();
+                                }, 100);
+                            } else {
+                                startWatchVideoProgress()
+                            }
+                        });
+                    </script>
+                    <!-- Script Esconder -->
+
                 </div>
             </div>
         </div>
         </div>
-        <br>
-        <br>
-        <br>
         <br>
     </header>
 
@@ -125,7 +193,7 @@
                             <table class="fb-comments-comment">
                                 <tbody>
                                     <tr>
-                                        <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m2.jpeg"></td>
+                                        <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m1.jpeg"></td>
                                         <td>
                                             <font class="fb-comments-comment-name">
                                                 <name>Vanessa Silva</name>
@@ -153,7 +221,7 @@
                             <table class="fb-comments-comment">
                                 <tbody>
                                     <tr>
-                                        <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m3.jpeg"></td>
+                                        <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m2.jpeg"></td>
                                         <td>
                                             <font class="fb-comments-comment-name">
                                                 <name>Silvana Pereira</name>
@@ -181,7 +249,7 @@
                             <table class="fb-comments-comment">
                                 <tbody>
                                     <tr>
-                                        <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m4.jpeg"></td>
+                                        <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m3.jpeg"></td>
                                         <td>
                                             <font class="fb-comments-comment-name">
                                                 <name>Mariana Martins</name>
@@ -209,7 +277,7 @@
                             <table class="fb-comments-comment">
                                 <tbody>
                                     <tr>
-                                        <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m5.jpeg"></td>
+                                        <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m4.jpeg"></td>
                                         <td>
                                             <font class="fb-comments-comment-name">
                                                 <name>Julliana Castro</name>
@@ -237,7 +305,7 @@
                             <table class="fb-comments-comment">
                                 <tbody>
                                     <tr>
-                                        <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/h1.jpeg"></td>
+                                        <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m5.jpeg"></td>
                                         <td>
                                             <font class="fb-comments-comment-name">
                                                 <name>Antônio Paulo dos Anjos</name>
@@ -265,7 +333,7 @@
                             <table class="fb-comments-comment">
                                 <tbody>
                                     <tr>
-                                        <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m7.jpeg"></td>
+                                        <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m6.jpeg"></td>
                                         <td>
                                             <font class="fb-comments-comment-name">
                                                 <name>Roberta Gomes</name>
@@ -293,7 +361,7 @@
                             <table class="fb-comments-comment">
                                 <tbody>
                                     <tr>
-                                        <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m6.jpeg">
+                                        <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m7.jpeg">
                                         </td>
                                         <td>
                                             <font class="fb-comments-comment-name">
@@ -325,7 +393,7 @@
                                 <table class="fb-comments-comment" id="10">
                                     <tbody>
                                         <tr>
-                                            <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/h4.jpeg">
+                                            <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m8.jpeg">
                                             </td>
                                             <td>
                                                 <font class="fb-comments-comment-name">
@@ -354,7 +422,7 @@
                                 <table class="fb-comments-comment">
                                     <tbody>
                                         <tr>
-                                            <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m15.jpeg">
+                                            <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m9.jpeg">
                                             </td>
                                             <td>
                                                 <font class="fb-comments-comment-name">
@@ -384,7 +452,7 @@
                                 <table class="fb-comments-comment">
                                     <tbody>
                                         <tr>
-                                            <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m16.jpeg">
+                                            <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m10.jpeg">
                                             </td>
                                             <td>
                                                 <font class="fb-comments-comment-name">
@@ -413,7 +481,7 @@
                                 <table class="fb-comments-comment">
                                     <tbody>
                                         <tr>
-                                            <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m17.jpeg"></td>
+                                            <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m11.jpeg"></td>
                                             <td>
                                                 <font class="fb-comments-comment-name">
                                                     <name>Juliana Dias</name>
@@ -441,7 +509,7 @@
                                 <table class="fb-comments-comment" id="14">
                                     <tbody>
                                         <tr>
-                                            <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m18.jpeg">
+                                            <td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/m12.jpeg">
                                             </td>
                                             <td>
                                                 <font class="fb-comments-comment-name">
@@ -469,14 +537,12 @@
                         </div>
                     </div>
                     <!-- Botão 2 -->
-                    <div id="cta1" class="mt-4 d-none">
-                        <a href="https://pay.kiwify.com.br/eivynCC" class="a-btn" style="text-decoration: none;">
-                            <span class="span-btn">QUERO COMPRAR AGORA!</span>
-                            <span class="span-btn2">(atenção: desconto limitado)</span>
-                        </a>
+                    <div class="esconder">
+                        <a class="button" href="https://pay.kiwify.com.br/eivynCC?src=vturb2" title="QUERO COMPRAR AGORA!">QUERO COMPRAR AGORA!</a>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -489,13 +555,6 @@
         </div>
         <!-- Copyright -->
     </footer>
-
-    <script type="text/javascript">
-        setTimeout(() => {
-            document.getElementById("cta1").classList.remove("d-none");
-            document.getElementById("cta2").classList.remove("d-none")
-        }, 1354000); // temporização da Call to Action (em milissegundos)
-    </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -573,7 +632,6 @@
             }
         }
     </script>
-
 </body>
 
 </html>
